@@ -9,7 +9,6 @@
 import AddTodo from "../components/AddTodo";
 import Todos from "../components/Todos";
 
-
 export default {
   name: "Home",
   components: {
@@ -17,35 +16,24 @@ export default {
     AddTodo,
   },
   data: () => {
-    return {
-      
-    };
+    return {};
   },
   methods: {
     deleteTodo(id) {
-      this.$store.dispatch('deleteTodo', id)
+      this.$store.dispatch("deleteTodo", id);
     },
     addTodo(newTodo) {
-      console.log(newTodo)
-      this.$store.dispatch('addTodo', newTodo)
-      // const { title, completed } = newTodo;
-      // axios
-      //   .post("https://jsonplaceholder.typicode.com/todos", {
-      //     title,
-      //     completed,
-      //   })
-      //   .then((response) => (this.todos = [...this.todos, response.data]))
-      //   .catch((err) => console.log(err));
+      this.$store.dispatch("addTodo", newTodo);
     },
   },
   computed: {
     todos() {
-      return this.$store.getters.allTodos
-    }
+      return this.$store.getters.allTodos;
+    },
   },
   created() {
     this.$store.dispatch("getTodos");
-  }
+  },
 };
 </script>
 
