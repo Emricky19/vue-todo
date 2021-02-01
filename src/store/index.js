@@ -1,27 +1,38 @@
-import axios from 'axios'
-import Vue from'vue'
-import Vuex from 'vuex'
+import axios from "axios";
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
-    todos: []
-}
+  todos: [],
+};
 
-const getters = {}
+const getters = {
+    allTodos: (state) => state.todos
+};
 
 const actions = {
-    getTodos: () => {
-        
-    }
-}
+  getTodos: ({ commit }) => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then((response) => {
+        console.log(response.data);
+        commit("SET_POSTS", response.data);
+      })
+      .catch((error) => console.log(error));
+  },
+};
 
-const mutations = {}
+const mutations = {
+  SET_POSTS: (state, todos) => {
+    state.todos = todos;
+  },
+};
 
-
-export default {
-    state,
-    getters,
-    actions,
-    mutations
-}
+export default new Vuex.Store({
+  state,
+  getters,
+  actions,
+  mutations,
+});
