@@ -1,11 +1,20 @@
 import axios from 'axios'
+import Vue from'vue'
+import Vuex from 'vuex'
 
+Vue.use(Vuex)
 
-const state = {}
+const state = {
+    todos: []
+}
 
 const getters = {}
 
-const actions = {}
+const actions = {
+    getTodos: () => {
+        
+    }
+}
 
 const mutations = {}
 
