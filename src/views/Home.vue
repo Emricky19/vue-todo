@@ -24,13 +24,7 @@ export default {
   },
   methods: {
     deleteTodo(id) {
-      axios
-        .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-        .then((res) => {
-          console.log(res);
-          this.todos = this.todos.filter((todo) => todo.id !== id);
-        })
-        .catch((err) => console.log(err));
+      this.$store.dispatch('deleteTodo', id)
     },
     addTodo(newTodo) {
       const { title, completed } = newTodo;
@@ -48,7 +42,7 @@ export default {
       return this.$store.getters.allTodos
     }
   },
-  mounted() {
+  created() {
     this.$store.dispatch("getTodos");
   }
 };
