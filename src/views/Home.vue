@@ -50,13 +50,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getTodos");
-  },
-  created() {
-    // axios
-    //   .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
-    //   .then((response) => (this.todos = response.data))
-    //   .catch((err) => console.log(err));
-  },
+  }
 };
 </script>
 
